@@ -3,8 +3,9 @@ import networkx as nx
 from schedule_tools import save_schedule_to_csv, calculate_schedule_range
 from assign_slots import assign_time_slots
 from graph_tools import add_edges, visualize_graph
+from read_file import create_grapf_from_csv
 
-dataset_path = "datasets/dataset1000.csv"
+dataset = "dataset1000.csv"
 
 start_date = "30.01.2025"
 
@@ -20,10 +21,7 @@ time_slots = [
     "16:00-16:45"
 ]
 
-df = pd.read_csv(dataset_path)
-
-G1 = nx.Graph()
-for index, row in df.iterrows(): G1.add_node(index)
+G1, df = create_grapf_from_csv(dataset)
 
 G1 = add_edges(df, G1, "group")
 df["primary_color"] = df.index.map(nx.coloring.greedy_color(G1, strategy="largest_first"))

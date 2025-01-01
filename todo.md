@@ -1,6 +1,6 @@
 - [x] check if the file "validation_tests/import unittests.py" is needed
-- [ ] update read_file
-- [ ] update tests for read file
+- [x] update read_file
+- [x] update tests for read file
 - [ ] update and fix tests for input file
 - [ ] update visualization
 - [ ] add unit tests for graph tools
