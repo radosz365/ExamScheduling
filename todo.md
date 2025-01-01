@@ -1,2 +1,10 @@
 - [x] check if the file "validation_tests/import unittests.py" is needed
+- [ ] update read_file
+- [ ] update tests for read file
+- [ ] update and fix tests for input file
+- [ ] update visualization
+- [ ] add unit tests for graph tools
+- [ ] add unit tests for schedlue tools
+- [ ] add custom largest first algorithm
+- [ ] add time computation
 - [ ] add imports back
