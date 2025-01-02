@@ -13,7 +13,7 @@ class Node:
     def __str__(self):
         return f"{self.course} {self.lecturer} {self.group} {self.classrom}"
 
-def create_grapf_from_csv(filename):
+def create_graph_from_csv(filename):
     G = nx.Graph()
     file_path = os.path.join("datasets", filename)
 
