@@ -3,7 +3,7 @@ import re
 import pandas as pd
 
 # Load the CSV file
-data_path = "dataset1000.csv"
+data_path = "datasets/dataset1000.csv"
 database = pd.read_csv(data_path).to_dict(orient="records")
 
 
@@ -30,7 +30,7 @@ class TestDatabase(unittest.TestCase):
     def test_lecturer_format(self):
         # Test for lecturer name format
         lecturer_pattern = re.compile(
-            r"^(Dr|Prof|Mgr|Dr hab)\.\s+[A-Za-z]+\s+[A-Za-z]+$"
+            r"^(Dr.?(?:\s+hab.?)?|Prof.|Mgr.|Inż.)\s+[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+(?:-[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+)?\s+[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+$"
         )
         for row in database:
             lecturer = row["lecturer"]
