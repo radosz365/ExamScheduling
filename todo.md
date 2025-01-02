@@ -5,6 +5,6 @@
 - [ ] update visualization
 - [ ] add unit tests for graph tools
 - [ ] add unit tests for schedlue tools
-- [ ] add custom largest first algorithm
+- [x] add custom largest first algorithm
 - [ ] add time computation
 - [ ] add imports back
