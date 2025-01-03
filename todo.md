@@ -3,8 +3,8 @@
 - [x] update tests for read file
 - [x] update and fix tests for input file
 - [x] update visualization
-- [ ] add unit tests for graph tools
-- [ ] add unit tests for schedlue tools
+- [x] add unit tests for graph tools
+- [x] add unit tests for schedlue tools
 - [x] add custom largest first algorithm
 - [x] add time computation
 - [ ] add imports back
