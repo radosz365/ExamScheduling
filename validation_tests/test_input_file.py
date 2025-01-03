@@ -1,10 +1,12 @@
-import unittest
-import re
-import pandas as pd
+import sys, os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from imports import *
 
 # Load the CSV file
-data_path = 'dataset1000.csv'
-database = pd.read_csv(data_path).to_dict(orient='records')
+data_path = "datasets/dataset1000.csv"
+database = pd.read_csv(data_path).to_dict(orient="records")
+
 
 class TestDatabase(unittest.TestCase):
 
@@ -28,14 +30,20 @@ class TestDatabase(unittest.TestCase):
 
     def test_lecturer_format(self):
         # Test for lecturer name format
-        lecturer_pattern = re.compile(r"^(Dr|Prof|Mgr|Dr hab)\.\s+[A-Za-z]+\s+[A-Za-z]+$")
+        lecturer_pattern = re.compile(
+            r"^(Dr.?(?:\s+hab.?)?|Prof.|Mgr.|Inż.)\s+[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+(?:-[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+)?\s+[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+$"
+        )
         for row in database:
             lecturer = row["lecturer"]
-            self.assertRegex(lecturer, lecturer_pattern, "Incorrect lecturer name format")
+            self.assertRegex(
+                lecturer, lecturer_pattern, "Incorrect lecturer name format"
+            )
 
     def test_group_format(self):
         # Test for group code format (e.g., XX.XX.XXX.XXXX.XXX)
-        group_pattern = re.compile(r"^[A-Z]{3}\.[A-Z]{2}[0-9]\.[A-Z]{3}\.[0-9]{4}\.[A-Z]{3}$")
+        group_pattern = re.compile(
+            r"^[A-Z]{3}\.[A-Z]{2}[0-9]\.[A-Z]{3}\.[0-9]{4}\.[A-Z]{3}$"
+        )
         for row in database:
             group = row["group"]
             self.assertRegex(group, group_pattern, "Incorrect group format")
@@ -47,10 +55,11 @@ class TestDatabase(unittest.TestCase):
             classroom = row["classroom"]
             self.assertRegex(classroom, classroom_pattern, "Incorrect classroom format")
 
-    #def test_unique_classroom_per_course(self):
-        # Optional: Check if each classroom is assigned to only one course
-        #classrooms = [row["classroom"] for row in database]
-        #self.assertEqual(len(classrooms), len(set(classrooms)), "Classrooms are assigned to multiple courses")
+    # def test_unique_classroom_per_course(self):
+    # Optional: Check if each classroom is assigned to only one course
+    # classrooms = [row["classroom"] for row in database]
+    # self.assertEqual(len(classrooms), len(set(classrooms)), "Classrooms are assigned to multiple courses")
+
 
 if __name__ == "__main__":
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+    unittest.main(argv=["first-arg-is-ignored"], exit=False)
