@@ -26,7 +26,22 @@ jobs:
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-        #Todo: Add test
+    - name: Set root
+      run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+
+    - name: Run unit tests
+      run: |
+        pytest unit_tests
+
+    - name: Run validation tests for input file
+      run: |
+        if [ -f validation_tests/test_input_file.py ]; then pytest validation_tests/test_input_file.py
+        else echo "Input file does not exist. Skipping tests."; fi
+
+    - name: Run validation tests for output file
+      run: |
+        if [ -f validation_tests/test_output_file.py ]; then pytest validation_tests/test_output_file.py
+        else echo "Output file does not exist. Skipping tests."; fi
 
     - name: Linting with Super-Linter
       uses: github/super-linter@v5
