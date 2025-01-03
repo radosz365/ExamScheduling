@@ -1,4 +1,4 @@
-import pandas as pd
+from imports import *
 
 def save_schedule_to_csv(df, output_path):
 
