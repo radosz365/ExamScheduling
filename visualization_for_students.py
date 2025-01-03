@@ -1,19 +1,9 @@
 from imports import *
  
-all_time_slots = [
-    "8:00-8:45",
-    "9:00-9:45",
-    "10:00-10:45",
-    "11:00-11:45",
-    "12:00-12:45",
-    "13:00-13:45",
-    "14:00-14:45",
-    "15:00-15:45",
-    "16:00-16:45"
-]
-
 file_path = "schedules/schedule1000.csv"
 data = pd.read_csv(file_path)
+
+all_time_slots =data["time"].dropna().unique().tolist()
 
 group_to_display = "UDT.FC6.DKR.6724.SZY"
 data = data[data["group"] == group_to_display]
