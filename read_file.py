@@ -1,7 +1,4 @@
-import pandas as pd
-import networkx as nx
-import os
-import csv
+from imports import *
 
 class Node:
     def __init__(self, course, lecturer, group, classrom):

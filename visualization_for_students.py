@@ -1,7 +1,4 @@
-import matplotlib.pyplot as plt
-import textwrap
-from matplotlib.table import Table
-import pandas as pd
+from imports import *
  
 all_time_slots = [
     "8:00-8:45",
@@ -22,7 +19,7 @@ group_to_display = "UDT.FC6.DKR.6724.SZY"
 data = data[data["group"] == group_to_display]
 
 data["datetime"] = data["date"] + " " + data["time"]
-data["date"] = pd.to_datetime(data["date"])
+data["date"] = pd.to_datetime(data["date"], dayfirst=True)
 data["time_slot"] = data["time"]
 
 unique_dates = data["date"].unique()
@@ -77,5 +74,7 @@ ax.add_table(table)
 plt.title(f"Exam schedule for group: {group_to_display}", fontsize=18, pad=20)
 plt.show()
 
+folder_path = "visualizations"
+os.makedirs(folder_path, exist_ok=True)
 output_file_path = f"visualizations/{group_to_display.replace('.', '_')}.png"
 fig.savefig(output_file_path, dpi=300, bbox_inches='tight')

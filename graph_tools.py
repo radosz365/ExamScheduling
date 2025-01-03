@@ -1,5 +1,4 @@
-import networkx as nx
-import matplotlib as plt
+from imports import *
 
 def add_edges(df, graph, group_column):
 
