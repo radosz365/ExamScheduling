@@ -1,0 +1,48 @@
+site_name: Graph coloring
+
+# Theme configuration
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
+
+# Navigation structure
+nav:
+  - Homepage: index.md
+  - Usage: usage.md
+  - Requirements: req.md
+  - Modules: mod.md
+  - Tests:
+      - Unit Tests: tests/unit_tests.md
+      - Validation Tests: tests/val_tests.md
+  - Data:
+      - Data CI/CD: data/data_ci_cd.md
+      - Dataset 1000: data/dataset1000.md
+
+# Homepage content
+extra:
+  homepage_content: >
+    This is a program that uses graph coloring to schedule exam dates.
+    
