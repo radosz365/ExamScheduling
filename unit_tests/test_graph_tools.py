@@ -1,9 +1,7 @@
-import pytest
-import pandas as pd
-import networkx as nx
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from graph_tools import add_edges
+from imports import *
 
 # --- Tests for add_edges ---
 def test_empty_dataframe():
