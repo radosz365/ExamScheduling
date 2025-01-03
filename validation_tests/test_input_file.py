@@ -1,6 +1,6 @@
-import unittest
-import re
-import pandas as pd
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from imports import *
 
 # Load the CSV file
 data_path = "datasets/dataset1000.csv"
