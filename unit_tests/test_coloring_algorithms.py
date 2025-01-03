@@ -1,8 +1,7 @@
-import pytest
-import networkx as nx
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from coloring_algorithms import largest_first
+from imports import *
 
 # --- Tests for largest_first ---
 def test_largest_first_vs_networkx():

@@ -1,9 +1,7 @@
-import pytest
-import pandas as pd
-from datetime import datetime, timedelta
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from assign_slots import assign_time_slots
+from imports import *
 
 def create_valid_dataframe():
     return pd.DataFrame({

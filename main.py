@@ -1,6 +1,4 @@
-import pandas as pd
-import networkx as nx
-import time
+from imports import *
 from schedule_tools import save_schedule_to_csv, calculate_schedule_range
 from assign_slots import assign_time_slots
 from graph_tools import add_edges, visualize_graph

@@ -1,8 +1,4 @@
-import matplotlib.pyplot as plt
-import textwrap
-from matplotlib.table import Table
-import pandas as pd
-import os
+from imports import *
  
 all_time_slots = [
     "8:00-8:45",
