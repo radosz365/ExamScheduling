@@ -3,7 +3,7 @@ from imports import *
 file_path = "schedules/schedule1000.csv"
 data = pd.read_csv(file_path)
 
-all_time_slots =data["time"].dropna().unique().tolist()
+all_time_slots = data["time"].dropna().unique().tolist()
 
 group_to_display = "UDT.FC6.DKR.6724.SZY"
 data = data[data["group"] == group_to_display]
