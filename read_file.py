@@ -1,5 +1,6 @@
 from imports import *
 
+
 class Node:
     def __init__(self, course, lecturer, group, classrom):
         self.course = course
@@ -9,6 +10,7 @@ class Node:
 
     def __str__(self):
         return f"{self.course} {self.lecturer} {self.group} {self.classrom}"
+
 
 def create_graph_from_csv(filename):
     G = nx.Graph()

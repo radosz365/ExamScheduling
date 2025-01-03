@@ -1,8 +1,16 @@
 from imports import *
 
+
 def assign_time_slots(df, start_date, time_slots):
 
-    if not {"course","lecturer","group","classroom","primary_color", "secondary_color"}.issubset(df.columns):
+    if not {
+        "course",
+        "lecturer",
+        "group",
+        "classroom",
+        "primary_color",
+        "secondary_color",
+    }.issubset(df.columns):
         raise ValueError("Missing required columns.")
 
     try:
@@ -22,16 +30,21 @@ def assign_time_slots(df, start_date, time_slots):
     current_slot = next(slot_iterator)
 
     for unique_primary_color in unique_primary_colors:
-        unique_secondary_colors = df[df["primary_color"] == unique_primary_color]["secondary_color"].unique().tolist()
+        unique_secondary_colors = (
+            df[df["primary_color"] == unique_primary_color]["secondary_color"]
+            .unique()
+            .tolist()
+        )
 
         for unique_secondary_color in unique_secondary_colors:
             while current_date.weekday() in [5, 6]:
                 current_date += timedelta(days=1)
 
-            df.loc[(df["primary_color"] == unique_primary_color) &
-                   (df["secondary_color"] == unique_secondary_color), ["date", "time"]] = [
-                current_date.strftime("%d.%m.%Y"), current_slot
-            ]
+            df.loc[
+                (df["primary_color"] == unique_primary_color)
+                & (df["secondary_color"] == unique_secondary_color),
+                ["date", "time"],
+            ] = [current_date.strftime("%d.%m.%Y"), current_slot]
 
             try:
                 current_slot = next(slot_iterator)
