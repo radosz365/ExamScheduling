@@ -7,7 +7,13 @@ from imports import *
 
 # --- Tests for largest_first ---
 def test_largest_first_vs_networkx() -> None:
+    """
+    Test the largest_first coloring algorithm against NetworkX's implementation.
 
+    Asserts:
+        Ensures the custom implementation produces a comparable number of colors
+        to NetworkX's greedy coloring using the 'largest_first' strategy.
+    """
     G: nx.Graph = nx.erdos_renyi_graph(10, 0.5, seed=42)
 
     custom_coloring: Dict[int, int] = largest_first(G)

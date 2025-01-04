@@ -2,7 +2,22 @@ from imports import *
 
 
 def assign_time_slots(df: pd.DataFrame, start_date: str, time_slots: List[str]) -> pd.DataFrame:
+    """
+    Assign time slots and dates to exams based on graph coloring.
 
+    Args:
+        df (pd.DataFrame): DataFrame containing exam data with required columns:
+            'course', 'lecturer', 'group', 'classroom', 'primary_color', and 'secondary_color'.
+        start_date (str): The starting date for scheduling in the format 'dd.mm.yyyy'.
+        time_slots (List[str]): A list of available time slots.
+
+    Returns:
+        pd.DataFrame: Updated DataFrame with 'date' and 'time' columns assigned.
+
+    Raises:
+        ValueError: If required columns are missing, start_date is incorrectly formatted,
+                    or time_slots is not a non-empty list.
+    """
     if not {
         "course",
         "lecturer",
