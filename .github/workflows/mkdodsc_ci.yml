@@ -1,4 +1,4 @@
-name: ci
+name: Publish documentation
 on:
   push:
     branches:
@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: pip install mkdocs-material
+      - run: pip install --upgrade mkdocs-material
       - run: mkdocs gh-deploy --force
