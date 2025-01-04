@@ -1,7 +1,7 @@
 from imports import *
 
 
-def add_edges(df, graph, group_column):
+def add_edges(df: pd.DataFrame, graph: nx.Graph, group_column: str) -> nx.Graph:
 
     grouped = df.groupby(group_column)
 
@@ -14,7 +14,7 @@ def add_edges(df, graph, group_column):
     return graph
 
 
-def visualize_graph(graph):
+def visualize_graph(graph: nx.Graph) -> None:
 
     plt.figure(figsize=(8, 6))
 

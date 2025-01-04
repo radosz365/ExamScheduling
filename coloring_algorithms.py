@@ -1,10 +1,12 @@
-def largest_first(graph):
+from imports import *
+
+def largest_first(graph: nx.Graph) -> Dict[int, int]:
 
     nodes_sorted = sorted(
         graph.nodes, key=lambda node: graph.degree[node], reverse=True
     )
 
-    coloring = {}
+    coloring: Dict[int, int] = {}
 
     for node in nodes_sorted:
 
