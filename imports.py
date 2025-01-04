@@ -11,3 +11,5 @@ from matplotlib.table import Table
 import pytest
 import unittest
 import re
+from typing import List, Tuple, Dict, Any
+from pandas import DataFrame

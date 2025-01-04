@@ -1,7 +1,7 @@
 from imports import *
 
 
-def save_schedule_to_csv(df, output_path):
+def save_schedule_to_csv(df: pd.DataFrame, output_path: str) -> None:
     try:
         if not {
             "course",
@@ -25,7 +25,7 @@ def save_schedule_to_csv(df, output_path):
         raise
 
 
-def calculate_schedule_range(df):
+def calculate_schedule_range(df: pd.DataFrame) -> int:
     if df.empty:
         raise ValueError("The DataFrame is empty.")
 
@@ -34,7 +34,7 @@ def calculate_schedule_range(df):
     start_date = df["date"].min()
     end_date = df["date"].max()
 
-    total_range = (end_date - start_date).days + 1
+    total_range: int = (end_date - start_date).days + 1
     print(f"Total schedule duration: {total_range} days")
 
     return total_range

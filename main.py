@@ -4,11 +4,11 @@ from assign_slots import assign_time_slots
 from graph_tools import add_edges, visualize_graph
 from read_file import create_graph_from_csv
 
-dataset = "dataset1000.csv"
+dataset: str = "dataset1000.csv"
 
-start_date = "30.01.2025"
+start_date: str = "30.01.2025"
 
-time_slots = [
+time_slots: List[str] = [
     "8:00-8:45",
     "9:00-9:45",
     "10:00-10:45",
@@ -20,8 +20,10 @@ time_slots = [
     "16:00-16:45",
 ]
 
-start_time = time.time()
+start_time: float = time.time()
 
+G1: nx.Graph
+df: pd.DataFrame
 G1, df = create_graph_from_csv(dataset)
 
 G1 = add_edges(df, G1, "group")
@@ -40,6 +42,6 @@ assign_time_slots(df, start_date, time_slots)
 save_schedule_to_csv(df, "schedules/schedule1000.csv")
 calculate_schedule_range(df)
 
-end_time = time.time()
-elapsed_time = end_time - start_time
+end_time: float = time.time()
+elapsed_time: float = end_time - start_time
 print(f"Computation time: {elapsed_time:.2f} s")

@@ -1,11 +1,11 @@
 from imports import *
 
-file_path = "schedules/schedule1000.csv"
-data = pd.read_csv(file_path)
+file_path: str = "schedules/schedule1000.csv"
+data: DataFrame = pd.read_csv(file_path)
 
-all_time_slots = data["time"].dropna().unique().tolist()
+all_time_slots: List[str] = data["time"].dropna().unique().tolist()
 
-group_to_display = "UDT.FC6.DKR.6724.SZY"
+group_to_display: str = "UDT.FC6.DKR.6724.SZY"
 data = data[data["group"] == group_to_display]
 
 data["datetime"] = data["date"] + " " + data["time"]
@@ -19,7 +19,7 @@ full_index = pd.MultiIndex.from_product(
 data = data.set_index(["time_slot", "date"]).reindex(full_index).reset_index()
 data["details"] = data["course"] + ", " + data["lecturer"] + ", " + data["classroom"]
 
-pivot_table = data.pivot_table(
+pivot_table: DataFrame = data.pivot_table(
     index="time_slot",
     columns="date",
     values="details",
@@ -31,7 +31,7 @@ pivot_table = pivot_table.replace("", pd.NA).dropna(how="all")
 pivot_table = pivot_table.reindex(all_time_slots).dropna(how="all")
 
 
-def wrap_text(text, width=15):
+def wrap_text(text: str, width: int = 15) -> str:
     if pd.isna(text) or not text.strip():
         return ""
     return "\n".join(textwrap.wrap(text, width=width))
@@ -42,8 +42,8 @@ ax.set_axis_off()
 
 table = Table(ax, bbox=[0, 0, 1, 1])
 
-n_cols = len(pivot_table.columns)
-n_rows = len(pivot_table.index) + 1
+n_cols: int = len(pivot_table.columns)
+n_rows: int = len(pivot_table.index) + 1
 
 header_cell = table.add_cell(
     0, 0, width=2, height=0.5, text="Time / Date", loc="center", facecolor="lightgrey"
@@ -94,7 +94,7 @@ ax.add_table(table)
 plt.title(f"Exam schedule for group: {group_to_display}", fontsize=18, pad=20)
 plt.show()
 
-folder_path = "visualizations"
+folder_path: str = "visualizations"
 os.makedirs(folder_path, exist_ok=True)
-output_file_path = f"visualizations/{group_to_display.replace('.', '_')}.png"
+output_file_path: str = f"visualizations/{group_to_display.replace('.', '_')}.png"
 fig.savefig(output_file_path, dpi=300, bbox_inches="tight")
