@@ -57,5 +57,9 @@ def assign_time_slots(df, start_date, time_slots):
             slot_iterator = iter(time_slots)
             current_slot = next(slot_iterator)
             current_date += timedelta(days=1)
+        
+        # even if there are still free slots on a given day,
+        # we skip to the next day to avoid a situation where
+        # one group have 2 exams in one day
 
     return df
