@@ -1,4 +1,7 @@
 # Welcome to the Exam Scheduling Program
 
-This is a program that uses graph coloring to schedule exam dates.
+# Exam Scheduling Program
+
+This program utilizes graph coloring algorithms to efficiently schedule exam dates, ensuring that no two exams with overlapping participants are scheduled simultaneously.
+
 
