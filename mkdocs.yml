@@ -43,8 +43,15 @@ nav:
       - schedule_tools: modules/schedule_tools.md
       - visualization_for_students: modules/visualization_for_students.md
   - Tests:
-      - Unit Tests: tests/unit_tests.md
-      - Validation Tests: tests/validation_tests.md
+      - Unit Tests:
+        - test_assign_slots: tests/unit_tests/test_assign_slots.md
+        - test_coloring_algorithms: tests/unit_tests/test_coloring_algorithms.md
+        - test_graph_tools: tests/unit_tests/test_graph_tools.md
+        - test_read_file: tests/unit_tests/test_read_file.md
+        - test_schedule_tools: tests/unit_tests/test_schedule_tools.md
+      - Validation Tests:
+        - test_input_file: tests/validation_tests/test_input_file.md
+        - test_output_file: tests/validation_tests/test_output_file.md
   - Data:
       - Dataset: data/dataset.md
   - Workflows:
