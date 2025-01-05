@@ -22,4 +22,5 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           path: ~/.cache/pip
       - run: pip install --upgrade mkdocs-material
+      - run: pip install --upgrade mkdocs-material mkdocstrings[python]
       - run: mkdocs gh-deploy --force

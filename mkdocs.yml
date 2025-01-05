@@ -33,16 +33,29 @@ nav:
   - Homepage: index.md
   - Usage: usage.md
   - Requirements: req.md
-  - Modules: mod.md
+  - Modules:
+      - assign_slots: modules/assign_slots.md
+      - coloring_algorithms: modules/coloring_algorithms.md
+      - graph_tools: modules/graph_tools.md
+      - imports: modules/imports.md
+      - main: modules/main.md
+      - read_file: modules/read_file.md
+      - schedule_tools: modules/schedule_tools.md
+      - visualization_for_students: modules/visualization_for_students.md
   - Tests:
       - Unit Tests: tests/unit_tests.md
       - Validation Tests: tests/val_tests.md
   - Data:
-      - Data CI/CD: data/data_ci_cd.md
-      - Dataset 1000: data/dataset1000.md
+      - Dataset: dataset.md
+  - Workflows:
+      - MkDocs: workflows/mkdocs_ci.md
+      - Python app: workflows/python_app.md
 
-# Homepage content
-extra:
-  homepage_content: >
-    This is a program that uses graph coloring to schedule exam dates.
-    
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_signature: true
+            show_source: true
