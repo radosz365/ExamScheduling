@@ -44,7 +44,7 @@ nav:
       - visualization_for_students: modules/visualization_for_students.md
   - Tests:
       - Unit Tests: tests/unit_tests.md
-      - Validation Tests: tests/val_tests.md
+      - Validation Tests: tests/validation_tests.md
   - Data:
       - Dataset: dataset.md
   - Workflows:
