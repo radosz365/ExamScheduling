@@ -38,3 +38,13 @@ def calculate_schedule_range(df):
     print(f"Total schedule duration: {total_range} days")
 
     return total_range
+
+
+def save_results_to_file(filename, algorithm_name, schedule_range, computation_time):
+    with open(filename, "a") as file:
+        file.write(f"----------------------------------------------\n")
+        file.write(f"Coloring algorithm: {algorithm_name}\n")
+        file.write(f"Total schedule duration: {schedule_range} days\n")
+        file.write(f"Computation time: {computation_time:.2f} s\n")
+
+    print(f"Results saved in: {filename}")

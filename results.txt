@@ -1,0 +1,12 @@
+----------------------------------------------
+Coloring algorithm: largest_first
+Total schedule duration: 27 days
+Computation time: 0.14 s
+----------------------------------------------
+Coloring algorithm: smallest_last
+Total schedule duration: 27 days
+Computation time: 0.19 s
+----------------------------------------------
+Coloring algorithm: saturation_largest_first
+Total schedule duration: 26 days
+Computation time: 1.46 s

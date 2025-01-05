@@ -1,8 +1,11 @@
 from imports import *
-from schedule_tools import save_schedule_to_csv, calculate_schedule_range
+from schedule_tools import save_schedule_to_csv, calculate_schedule_range, save_results_to_file
 from assign_slots import assign_time_slots
 from graph_tools import add_edges, visualize_graph
 from read_file import create_graph_from_csv
+
+coloring_algorithms = ["largest_first","smallest_last","saturation_largest_first"]
+coloring_algorithm = coloring_algorithms[2]
 
 dataset = "dataset1000.csv"
 
@@ -25,21 +28,24 @@ start_time = time.time()
 G1, df = create_graph_from_csv(dataset)
 
 G1 = add_edges(df, G1, "group")
-df["primary_color"] = df.index.map(
-    nx.coloring.greedy_color(G1, strategy="largest_first")
-)
+
+coloring = nx.coloring.greedy_color(G1, strategy=coloring_algorithm)
+df["primary_color"] = df.index.map(coloring)
+
 G1.clear_edges()
 
 G1 = add_edges(df, G1, "classroom")
 G1 = add_edges(df, G1, "lecturer")
-df["secondary_color"] = df.index.map(
-    nx.coloring.greedy_color(G1, strategy="largest_first")
-)
+
+coloring = nx.coloring.greedy_color(G1, strategy=coloring_algorithm)
+df["secondary_color"] = df.index.map(coloring)
 
 assign_time_slots(df, start_date, time_slots)
 save_schedule_to_csv(df, "schedules/schedule1000.csv")
-calculate_schedule_range(df)
+schedule_range = calculate_schedule_range(df)
 
 end_time = time.time()
 elapsed_time = end_time - start_time
 print(f"Computation time: {elapsed_time:.2f} s")
+
+save_results_to_file("results.txt", coloring_algorithm, schedule_range, elapsed_time)
