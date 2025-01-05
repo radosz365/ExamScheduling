@@ -46,7 +46,7 @@ nav:
       - Unit Tests: tests/unit_tests.md
       - Validation Tests: tests/validation_tests.md
   - Data:
-      - Dataset: dataset.md
+      - Dataset: data/dataset.md
   - Workflows:
       - MkDocs: workflows/mkdocs_ci.md
       - Python app: workflows/python_app.md
