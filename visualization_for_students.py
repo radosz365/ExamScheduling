@@ -1,7 +1,10 @@
 from imports import *
 
-# file_path = "schedules/schedule1000.csv"
-# data = pd.read_csv(file_path)
+
+def wrap_text(text, width=15):
+    if pd.isna(text) or not text.strip():
+        return ""
+    return "\n".join(textwrap.wrap(text, width=width))
 
 
 def create_exam_schedule_png(file_path, group_to_display):
@@ -32,11 +35,6 @@ def create_exam_schedule_png(file_path, group_to_display):
 
     pivot_table = pivot_table.replace("", pd.NA).dropna(how="all")
     pivot_table = pivot_table.reindex(all_time_slots).dropna(how="all")
-
-    def wrap_text(text, width=15):
-        if pd.isna(text) or not text.strip():
-            return ""
-        return "\n".join(textwrap.wrap(text, width=width))
 
     fig, ax = plt.subplots(figsize=(14, 10))
     ax.set_axis_off()
