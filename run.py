@@ -1,4 +1,4 @@
-from main import create_schedule
+from main import create_schedule, create_exam_schedule_png_for_students
 from visualization_for_students import create_exam_schedule_png
 from imports import *
 
@@ -32,13 +32,6 @@ group_to_display = "XGD.AR0.ANY.5116.CIL"
 
 # call the create_exam_schedule_png function to create the exam schedule
 create_exam_schedule_png(file_path, group_to_display)
-
-
-# function to create exam schedule png for students for a specific file
-def create_exam_schedule_png_for_students(group_to_display):
-    file_path = "schedules/schedule1000.csv"
-    create_exam_schedule_png(file_path, group_to_display)
-
 
 # call the function to create exam schedule png for students for a specific file
 create_exam_schedule_png_for_students(group_to_display)
