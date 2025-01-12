@@ -7,7 +7,7 @@ app = Flask(__name__, static_folder="visualizations")
 
 @app.route("/home", methods=["GET"])
 def hello():
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 @app.route("/show_schedule", methods=["GET"])
