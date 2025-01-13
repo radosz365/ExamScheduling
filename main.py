@@ -25,7 +25,8 @@ def create_schedule(dataset, start_date, time_slots):
     )
 
     assign_time_slots(df, start_date, time_slots)
-    save_schedule_to_csv(df, dataset)
+    output_path = f"schedules/schedule_{dataset}"
+    save_schedule_to_csv(df, output_path)
     calculate_schedule_range(df)
 
     end_time = time.time()
