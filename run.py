@@ -25,7 +25,7 @@ time_slots = [
 create_schedule(dataset, start_date, time_slots)
 
 # set path to the schedule file
-file_path = "schedules/schedule1000.csv"
+file_path = "schedules/schedule_dataset1000.csv"
 
 # set the group to display
 group_to_display = "XGD.AR0.ANY.5116.CIL"
@@ -34,4 +34,4 @@ group_to_display = "XGD.AR0.ANY.5116.CIL"
 create_exam_schedule_png(file_path, group_to_display)
 
 # call the function to create exam schedule png for students for a specific file
-create_exam_schedule_png_for_students(group_to_display)
+#create_exam_schedule_png_for_students(file_path, group_to_display)

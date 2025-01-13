@@ -35,6 +35,5 @@ def create_schedule(dataset, start_date, time_slots):
     return f"Computation time: {elapsed_time:.2f} s"
 
 # function to create exam schedule png for students for a specific file
-def create_exam_schedule_png_for_students(group_to_display):
-    file_path = "schedules/schedule1000.csv"
+def create_exam_schedule_png_for_students(file_path, group_to_display):
     create_exam_schedule_png(file_path, group_to_display)
