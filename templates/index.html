@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Zajęć</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+div {
+    margin: 10% auto;
+    width: 50%;
+    text-align: center;
+}
+h1 {
+    color: #333;
+}
+p {
+    color: #666;
+}
+form {
+    margin-top: 20px;
+}
+label {
+    color: #333;
+}
+input {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #555;
+}
+</style>
+<body>
+<div>
+    <h1>Witaj</h1>
+    <p>Wpisz grupę, aby wyświetlić plan:</p>
+    <form action="/show_schedule" method="get">
+        <label for="custom-group">Grupa:</label>
+        <input type="text" id="custom-group" name="group" placeholder="Wpisz grupę">
+        <br><br>
+        <button type="submit">Pokaż plan</button>
+    </form>
+</div>
+</body>
+</html>
