@@ -1,4 +1,4 @@
-from main import create_schedule, create_exam_schedule_png_for_students
+from main import create_schedule
 from visualization_for_students import create_exam_schedule_png
 from imports import *
 
