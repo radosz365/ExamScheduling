@@ -1,7 +1,7 @@
 from imports import *
 from schedule_tools import save_schedule_to_csv, calculate_schedule_range
 from assign_slots import assign_time_slots
-from graph_tools import add_edges, visualize_graph
+from graph_tools import add_edges
 from read_file import create_graph_from_csv
 
 
@@ -34,6 +34,4 @@ def create_schedule(dataset, start_date, time_slots):
 
     return f"Computation time: {elapsed_time:.2f} s"
 
-# function to create exam schedule png for students for a specific file
-def create_exam_schedule_png_for_students(file_path, group_to_display):
-    create_exam_schedule_png(file_path, group_to_display)
+

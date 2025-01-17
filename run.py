@@ -1,4 +1,4 @@
-from main import create_schedule, create_exam_schedule_png_for_students
+from main import create_schedule
 from visualization_for_students import create_exam_schedule_png
 from imports import *
 
@@ -28,10 +28,9 @@ create_schedule(dataset, start_date, time_slots)
 file_path = "schedules/schedule_dataset1000.csv"
 
 # set the group to display
-group_to_display = "XGD.AR0.ANY.5116.CIL"
+group_to_display = "CXC.RY5.YNN.8006.FCS"
 
 # call the create_exam_schedule_png function to create the exam schedule
 create_exam_schedule_png(file_path, group_to_display)
 
-# call the function to create exam schedule png for students for a specific file
-#create_exam_schedule_png_for_students(file_path, group_to_display)
+
