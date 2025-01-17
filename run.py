@@ -33,5 +33,3 @@ group_to_display = "XGD.AR0.ANY.5116.CIL"
 # call the create_exam_schedule_png function to create the exam schedule
 create_exam_schedule_png(file_path, group_to_display)
 
-# call the function to create exam schedule png for students for a specific file
-#create_exam_schedule_png_for_students(file_path, group_to_display)
