@@ -3,7 +3,10 @@ import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from imports import *
 
-schedule_file = "schedules/schedule_dataset1000.csv"
+schedule_file: str = "schedules/schedule_dataset1000.csv"
+"""
+Path to the schedule CSV file.
+"""
 
 
 def load_schedule() -> DataFrame:
