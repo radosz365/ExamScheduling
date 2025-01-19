@@ -40,6 +40,7 @@ nav:
       - imports: modules/imports.md
       - main: modules/main.md
       - read_file: modules/read_file.md
+      - run: modules/run.md
       - schedule_tools: modules/schedule_tools.md
       - visualization_for_students: modules/visualization_for_students.md
   - Tests:
