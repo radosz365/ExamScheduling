@@ -5,6 +5,7 @@ validation_tests/__pycache__
 unit_tests/__pycache__
 *.py[cod]
 *$py.class
+.venv/.env
 
 # C extensions
 *.so
