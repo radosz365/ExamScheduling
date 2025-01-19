@@ -65,7 +65,7 @@ Make sure you have Python 3.8 or higher installed on your system.
 To run the program with default settings:
 
 ```bash
-python main.py
+python run.py
 ```
 
 ### Custom Settings
@@ -73,8 +73,7 @@ python main.py
 1. Add your dataset:
 
    - Place your CSV file containing exam and participant data into the `datasets` folder.
-
-2. Edit the `main.py` file:
+2. Edit the `run.py` file:
 
    - Set the dataset file name:
      ```python
@@ -101,7 +100,7 @@ python main.py
 3. Run the program:
 
    ```bash
-   python main.py
+   python run.py
    ```
 
 ### Output
@@ -112,7 +111,8 @@ python main.py
 ---
 
 ### Demo
-To generate a schedule visualization, enter the path to the data file in the `visualization_for_students` file in the `file_path` variable and enter the group for which you want to generate the visualization in the `group_to_display` variable.
+
+To generate a schedule visualization, enter the path to the data file in the `run.py` file in the `file_path` variable and enter the group for which you want to generate the visualization in the `group_to_display` variable.
 
 ```bash
     file_path = "schedules/your_dataset.csv"
