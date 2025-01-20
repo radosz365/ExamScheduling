@@ -1,92 +1,91 @@
-# Python Application CI Workflow
+## Workflow Overview
 
-## Overview
+The workflow is triggered on events related to the `main` branch and ensures the application meets quality standards through unit tests, validation tests, and linting.
 
-This document explains how the Continuous Integration (CI) workflow is set up for the Python application in this project. The CI pipeline ensures code quality, correctness, and reliability by automating tasks such as dependency installation, code linting, running tests, and deploying the application.
+## Trigger Events
 
----
+The workflow runs on the following events:
 
-## Workflow Description
+- **Push** events to the `main` branch.
+- **Pull Requests** targeting the `main` branch.
 
-The CI pipeline for the Python application includes the following steps:
-1. Automatically trigger the workflow on commits, pull requests, or manual dispatch.
-2. Install dependencies and set up the environment.
-3. Run code linting to ensure adherence to coding standards.
-4. Execute unit and integration tests.
-5. Deploy the application (if applicable).
+## Permissions
 
----
+The workflow grants `contents: read` permission for accessing the repository contents.
 
-## Workflow File
+## Jobs
 
-The workflow file is located at `.github/workflows/python_app.yml` in the repository. Below is an overview of its configuration:
+### Test and Lint Job
 
-### Triggers
-
-The workflow is triggered by:
-- Pushes to any branch.
-- Pull requests targeting the `main` branch.
-- Manual workflow dispatch for on-demand execution.
+The `test-and-lint` job is responsible for running tests and performing linting. It runs on the latest Ubuntu environment.
 
 ### Steps
 
-1. **Checkout Code**:
-   - Clone the repository to the CI environment.
-
-2. **Setup Python**:
-   - Use the `actions/setup-python` GitHub Action to configure the Python runtime.
-
-3. **Install Dependencies**:
-   - Install all required Python packages using `requirements.txt`.
-
-4. **Lint the Code**:
-   - Use tools such as `flake8` or `pylint` to check for coding standard violations.
-
-5. **Run Tests**:
-   - Use `pytest` to execute unit and integration tests, ensuring the application works as expected.
-
----
-
-## Example Workflow File
-
-Here is an example of a GitHub Actions workflow configuration for the Python application:
-
+**1.Checkout the Repository**
 ```yaml
-name: Python Application CI
+- uses: actions/checkout@v4
+```
+This step checks out the repository code to enable access to the application files.
 
-on:
-  push:
-    branches:
-      - '*'
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+**2.Set up Python Environment**
+```yaml
+- name: Set up Python 3.10
+  uses: actions/setup-python@v3
+  with:
+    python-version: "3.10"
+```
+This step sets up a Python 3.10 environment.
 
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+**3.Install Dependencies**
+```yaml
+- name: Install dependencies
+  run: |
+    python -m pip install --upgrade pip
+    pip install flake8 pytest
+    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+```
+This step installs essential dependencies, including `flake8` for linting and `pytest` for testing. If a `requirements.txt` file exists, it installs the listed dependencies.
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+**4.Set Root Directory**
+```yaml
+- name: Set root
+  run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+```
+This step ensures the root directory is correctly set for Python imports.
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
+**5.Run Unit Tests**
+```yaml
+- name: Run unit tests
+  run: |
+    pytest unit_tests
+```
+This step runs unit tests located in the `unit_tests` directory.
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+**6.Run Validation Tests for Input File**
+```yaml
+- name: Run validation tests for input file
+  run: |
+    if [ -f validation_tests/test_input_file.py ]; then pytest validation_tests/test_input_file.py
+    else echo "Input file does not exist. Skipping tests."; fi
+```
+This step conditionally runs input file validation tests if the test script exists.
 
-      - name: Lint Code
-        run: |
-          pip install flake8
-          flake8 .
+**7.Run Validation Tests for Output File**
+```yaml
+- name: Run validation tests for output file
+  run: |
+    if [ -f validation_tests/test_output_file.py ]; then pytest validation_tests/test_output_file.py
+    else echo "Output file does not exist. Skipping tests."; fi
+```
+This step conditionally runs output file validation tests if the test script exists.
 
-      - name: Run Tests
-        run: |
-          pip install pytest
-          pytest
+**8.Linting with Super-Linter**
+```yaml
+- name: Linting with Super-Linter
+  uses: github/super-linter@v5
+  env:
+    VALIDATE_PYTHON_PYLINT: true
+    DEFAULT_BRANCH: main
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+This step performs linting using GitHub's Super-Linter, with `pylint` validation enabled for Python files.

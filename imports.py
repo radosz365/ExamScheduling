@@ -2,12 +2,12 @@
 This module includes all necessary imports for the project.
 
 It provides libraries and modules required for:
-- Date and time manipulation.
-- Graph creation and visualization.
-- Data manipulation and processing.
-- Testing with pytest and unittest.
-- File handling and CSV operations.
-- Typing annotations for type hinting.
+date and time manipulation,
+graph creation and visualization,
+data manipulation and processing,
+testing with pytest and unittest,
+file handling and CSV operations,
+typing annotations for type hinting.
 """
 from datetime import datetime, timedelta
 import networkx as nx

@@ -1,124 +1,100 @@
-# Usage
+## Installation
 
-This section explains how to use the exam scheduling program.
-Provide instructions and examples for users to understand its functionality.
+### Prerequisites
 
-# Usage Guide for the Exam Scheduling Application
+Make sure you have Python 3.8 or higher installed on your system.
 
-This guide provides a step-by-step explanation for using the Exam Scheduling Application, aimed at users with no prior technical knowledge. Follow the instructions carefully to ensure successful operation of the application.
+### Steps
 
----
+**1.Clone the repository:**
 
-## Step 1: Install Python
+```bash
+git clone https://github.com/radosz365/ExamScheduling.git
+cd ExamScheduling
+```
 
-Ensure Python is installed on your computer:
-1. Go to the [Python website](https://www.python.org/).
-2. Download the latest version of Python for your operating system.
-3. Install Python by following the installation instructions.
-4. Verify the installation by opening a terminal (Command Prompt/PowerShell on Windows, Terminal on macOS/Linux) and typing:
-   ```bash
-   python --version
-   ```
-   or
-   ```bash
-   python3 --version
-   ```
+**2.Create a virtual environment:**
 
----
-
-## Step 2: Set Up the Project
-
-### Clone the Repository
-1. Download the project files or clone the repository containing the application.
-   Example command to clone:
-   ```bash
-   git clone <repository_url>
-   ```
-
-### Navigate to the Project Folder
-2. Open the terminal and navigate to the downloaded project folder:
-   ```bash
-   cd <project_folder>
-   ```
-
----
-
-## Step 3: Create a Virtual Environment
-
-A virtual environment ensures that all dependencies are isolated to this project.
-
-### On macOS/Linux:
+- On macOS/Linux:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### On Windows:
+- On Windows:
 ```bash
 python -m venv venv
-venv\Scripts\activate
+.\venv\Scripts\activate
 ```
 
-You should see `(venv)` at the beginning of your terminal prompt, indicating the virtual environment is active.
+**3.Install the dependencies:**
 
----
-
-## Step 4: Install Required Dependencies
-
-The application uses external libraries that need to be installed:
-1. Make sure you are inside the project folder.
-2. Run the following command to install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
----
-
-## Step 5: Run the Application
-
-1. Make sure the virtual environment is activated.
-2. Execute the main script to start the application:
-   ```bash
-   python main.py
-   ```
-
-The application will load and provide outputs or visualizations based on your dataset and the implemented exam scheduling algorithm.
-
----
-
-## Step 6: Use the Visualization Tool (Optional)
-
-To generate visualizations for students:
-1. Make sure the main script has been executed and the data has been processed.
-2. Run the following command to execute the visualization tool:
-   ```bash
-   python visualization_for_students.py
-   ```
-3. Follow the on-screen instructions to generate visual outputs.
-
----
-
-## Step 7: Exit the Virtual Environment
-
-Once you're done, deactivate the virtual environment by typing:
 ```bash
-deactivate
+pip install -r requirements.txt
 ```
 
-This will return your terminal to the global Python environment.
+## Usage
 
----
+### Default Settings
 
-## Troubleshooting
+To run the program with default settings:
 
-### Common Issues:
-1. **Python Command Not Found**: Ensure Python is properly installed and added to your system's PATH.
-2. **Dependencies Not Installed**: Ensure the virtual environment is activated before running `pip install -r requirements.txt`.
-3. **Script Errors**: Verify that you are in the correct project folder and that the dataset file paths are correct.
+```bash
+python run.py
+```
 
-If issues persist, consult the application's documentation or contact the developer.
+### Custom Settings
 
----
+**1.Add your dataset:**
 
-This guide is designed to help you use the Exam Scheduling Application effectively. Ensure you have the correct dataset files and follow the steps in order for best results.
+- Place your CSV file containing exam and participant data into the `datasets` folder.
 
+**2.Edit the `run.py` file:**
+
+- Set the dataset file name:
+```bash
+dataset = "your_dataset.csv"
+```
+
+- Configure the start date for exams:
+```bash
+start_date = "YYYY-MM-DD"
+```
+
+- Define custom time slots (optional):
+```bash
+time_slots = [
+    "8:00-8:45",
+    "9:00-9:45",
+    "10:00-10:45",
+    "11:00-11:45",
+    "12:00-12:45",
+    "13:00-13:45",
+    "14:00-14:45",
+    "15:00-15:45",
+    "16:00-16:45",
+]
+```
+
+**3.Run the program:**
+
+```bash
+python run.py
+```
+
+### Output
+
+- Schedule CSV: Saved in the `schedules` folder.
+- Visualizations: Saved in the `visualizations` folder as PNG files.
+
+### Demo
+
+To generate a schedule visualization, enter the path to the data file in the `run.py` file in the `file_path` variable and enter the group for which you want to generate the visualization in the `group_to_display` variable.
+
+```bash
+file_path = "schedules/your_dataset.csv"
+group_to_display = "the group you want to save in png format"
+```
+
+An example of a generated schedule visualization:
+![Example Visualization](example_visualization.png)
