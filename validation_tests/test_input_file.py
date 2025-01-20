@@ -23,7 +23,9 @@ class TestDatabase(unittest.TestCase):
         """
         Ensure all rows in the dataset are unique.
         """
-        rows: List[Tuple[Tuple[str, Any], ...]] = [tuple(row.items()) for row in database]
+        rows: List[Tuple[Tuple[str, Any], ...]] = [
+            tuple(row.items()) for row in database
+        ]
         self.assertEqual(len(rows), len(set(rows)), "Not all rows are unique.")
 
     def test_non_empty_values(self) -> None:

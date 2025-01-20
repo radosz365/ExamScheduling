@@ -1,5 +1,6 @@
 from imports import *
 
+
 def largest_first(graph: nx.Graph) -> Dict[int, int]:
     """
     Perform graph coloring using the Largest First heuristic.

@@ -7,7 +7,7 @@ def save_schedule_to_csv(df: pd.DataFrame, output_path: str) -> None:
 
     Args:
         df (pd.DataFrame): DataFrame containing the schedule data with required columns:
-            'course', 'lecturer', 'group', 'classroom', 'primary_color', 
+            'course', 'lecturer', 'group', 'classroom', 'primary_color',
             'secondary_color', 'date', and 'time'.
         output_path (str): Path to save the CSV file.
 

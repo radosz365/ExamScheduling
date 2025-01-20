@@ -28,7 +28,10 @@ def test_multiple_groups() -> None:
     Asserts:
         Ensures that edges are correctly added between nodes in the same group.
     """
-    data: dict[str, list[Any]] = {"group": ["A", "A", "B", "B", "C"], "value": [1, 2, 3, 4, 5]}
+    data: dict[str, list[Any]] = {
+        "group": ["A", "A", "B", "B", "C"],
+        "value": [1, 2, 3, 4, 5],
+    }
     df: pd.DataFrame = pd.DataFrame(data)
     graph: nx.Graph = nx.Graph()
     result_graph: nx.Graph = add_edges(df, graph, "group")

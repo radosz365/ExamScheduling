@@ -1,7 +1,9 @@
 from imports import *
 
 
-def assign_time_slots(df: pd.DataFrame, start_date: str, time_slots: List[str]) -> pd.DataFrame:
+def assign_time_slots(
+    df: pd.DataFrame, start_date: str, time_slots: List[str]
+) -> pd.DataFrame:
     """
     Assign time slots and dates to exams based on graph coloring.
 
@@ -72,7 +74,7 @@ def assign_time_slots(df: pd.DataFrame, start_date: str, time_slots: List[str]) 
             slot_iterator = iter(time_slots)
             current_slot = next(slot_iterator)
             current_date += timedelta(days=1)
-        
+
         # even if there are still free slots on a given day,
         # we skip to the next day to avoid a situation where
         # one group have 2 exams in one day
