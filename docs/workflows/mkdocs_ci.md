@@ -6,9 +6,7 @@ The workflow is triggered on specific events related to the `documentation` and 
 
 The workflow runs on the following events:
 
-- **Push** events to:
-  - `documentation` branch
-  - `main` branch
+- **Push** events to `documentation` branch
 - **Pull Requests** targeting the `main` branch
 
 ## Permissions

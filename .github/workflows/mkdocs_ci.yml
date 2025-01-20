@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - documentation
-      - main
   pull_request:
     branches:
       - main
