@@ -105,7 +105,7 @@ python run.py
 
 ### Output
 
-- **Schedule CSV**: Saved in the `outputs` folder.
+- **Schedule CSV**: Saved in the `schedules` folder.
 - **Visualizations**: Saved in the `visualizations` folder as PNG files.
 
 ---

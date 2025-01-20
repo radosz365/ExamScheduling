@@ -1,0 +1,70 @@
+site_name: Exam Scheduling
+
+# Theme configuration
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
+
+# Navigation structure
+nav:
+  - Homepage: index.md
+  - Usage: usage.md
+  - Requirements: req.md
+  - Modules:
+      - assign_slots: modules/assign_slots.md
+      - coloring_algorithms: modules/coloring_algorithms.md
+      - graph_tools: modules/graph_tools.md
+      - imports: modules/imports.md
+      - main: modules/main.md
+      - read_file: modules/read_file.md
+      - run: modules/run.md
+      - schedule_tools: modules/schedule_tools.md
+      - visualization_for_students: modules/visualization_for_students.md
+  - Tests:
+      - Unit Tests:
+          - test_assign_slots: tests/unit_tests/test_assign_slots.md
+          - test_coloring_algorithms: tests/unit_tests/test_coloring_algorithms.md
+          - test_graph_tools: tests/unit_tests/test_graph_tools.md
+          - test_read_file: tests/unit_tests/test_read_file.md
+          - test_schedule_tools: tests/unit_tests/test_schedule_tools.md
+      - Validation Tests:
+          - test_input_file: tests/validation_tests/test_input_file.md
+          - test_output_file: tests/validation_tests/test_output_file.md
+  - Data:
+      - Dataset: data/dataset.md
+  - Workflows:
+      - MkDocs: workflows/mkdocs_ci.md
+      - Python app: workflows/python_app.md
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_signature: true
+            show_source: true
+

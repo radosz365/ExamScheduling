@@ -1,23 +1,43 @@
 from imports import *
 
 
-def wrap_text(text, width=15):
+def wrap_text(text: str, width: int = 15) -> str:
+    """
+    Wrap text to fit within a specified width.
+
+    Args:
+        text (str): The input text to be wrapped.
+        width (int): The maximum width of each line.
+
+    Returns:
+        str: Wrapped text with line breaks.
+    """
     if pd.isna(text) or not text.strip():
         return ""
     return "\n".join(textwrap.wrap(text, width=width))
 
 
-def create_exam_schedule_png(file_path, group_to_display):
-    data = pd.read_csv(file_path)
+def create_exam_schedule_png(file_path: str, group_to_display: str) -> None:
+    """
+    Create and save a visual representation of the exam schedule for a specific group.
 
-    all_time_slots = data["time"].dropna().unique().tolist()
+    Args:
+        file_path (str): Path to the input CSV file containing the schedule data.
+        group_to_display (str): The group for which the schedule will be visualized.
+
+    Returns:
+        None
+    """
+    data: pd.DataFrame = pd.read_csv(file_path)
+
+    all_time_slots: List[str] = data["time"].dropna().unique().tolist()
     data = data[data["group"] == group_to_display]
 
     data["datetime"] = data["date"] + " " + data["time"]
     data["date"] = pd.to_datetime(data["date"], dayfirst=True)
     data["time_slot"] = data["time"]
 
-    unique_dates = data["date"].unique()
+    unique_dates: List[pd.Timestamp] = data["date"].unique()
     full_index = pd.MultiIndex.from_product(
         [all_time_slots, unique_dates], names=["time_slot", "date"]
     )
@@ -26,7 +46,7 @@ def create_exam_schedule_png(file_path, group_to_display):
         data["course"] + ", " + data["lecturer"] + ", " + data["classroom"]
     )
 
-    pivot_table = data.pivot_table(
+    pivot_table: pd.DataFrame = data.pivot_table(
         index="time_slot",
         columns="date",
         values="details",
@@ -95,17 +115,26 @@ def create_exam_schedule_png(file_path, group_to_display):
 
     plt.title(f"Exam schedule for group: {group_to_display}", fontsize=18, pad=20)
 
-    folder_path = "visualizations"
+    folder_path: str = "visualizations"
     os.makedirs(folder_path, exist_ok=True)
-    output_file_path = f"{folder_path}/{group_to_display.replace('.', '_')}.png"
+    output_file_path: str = f"{folder_path}/{group_to_display.replace('.', '_')}.png"
     fig.savefig(output_file_path, dpi=300, bbox_inches="tight")
 
     print(f"Schedule visualization saved to {output_file_path}")
 
 
-def create_exam_schedule_png_for_all_groups(file_path):
-    data = pd.read_csv(file_path)
-    groups = data["group"].unique().tolist()
+def create_exam_schedule_png_for_all_groups(file_path: str) -> None:
+    """
+    Create and save visual representations of the exam schedules for all groups.
+
+    Args:
+        file_path (str): Path to the input CSV file containing the schedule data.
+
+    Returns:
+        None
+    """
+    data: pd.DataFrame = pd.read_csv(file_path)
+    groups: List[str] = data["group"].unique().tolist()
     for group in groups:
         create_exam_schedule_png(file_path, group)
     print("All schedules have been saved to visualizations folder")
